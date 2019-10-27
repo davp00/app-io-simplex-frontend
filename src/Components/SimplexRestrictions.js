@@ -14,6 +14,11 @@ class SimplexRestrictions extends Component {
                     {
                         this.renderRestrictions()
                     }
+                    <Row>
+                        {
+                            this.renderNoNegativity()
+                        }
+                    </Row>
                 </div>
             </div>
         );
@@ -56,7 +61,7 @@ class SimplexRestrictions extends Component {
                         </Col>
                         <Col md={2} className={'ml-3'}>
                             <Form.Item>
-                                <InputNumber />
+                                <InputNumber/>
                             </Form.Item>
                         </Col>
                     </Form>
@@ -65,6 +70,34 @@ class SimplexRestrictions extends Component {
         }
 
         return restrictions;
+    }
+
+    renderNoNegativity() {
+        const {n_vars, n_restrictions} = this.context;
+        const restriction = [];
+        for (let x = 0; x < n_vars; x++) {
+            restriction.push(
+                <span key={`r-${n_restrictions}-${x}`}>
+                    <Col md={1} sm={12}>
+                        <TeX>{`x_${x}`}</TeX>
+                    </Col>
+                    {
+                        x !== n_vars - 1 && (
+                            <Col md={1}> <TeX className={''}>,</TeX></Col>
+                        )
+                    }
+                    </span>
+            )
+        }
+
+        restriction.push(
+            <span key={`r-${n_restrictions}-${n_vars}`}>
+                    <Col md={2} sm={12}>
+                        <TeX>{`\\ge 0`}</TeX>
+                    </Col>
+            </span>
+        );
+        return restriction;
     }
 }
 

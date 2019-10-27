@@ -5,6 +5,7 @@ import { SimplexContextProvider } from "../context/SimplexContext";
 import SimplexObjetiveFunction from "../Components/SimplexObjetiveFunction";
 import MathJax from 'react-mathjax2';
 import SimplexRestrictions from "../Components/SimplexRestrictions";
+import SendButton from "../Components/SendButton";
 
 const {Content} = Layout;
 
@@ -26,6 +27,7 @@ export default class SimplexPage extends Component{
                         <SimplexPrincipalForm />
                         <SimplexObjetiveFunction />
                         <SimplexRestrictions />
+                        <SendButton/>
                     </SimplexContextProvider>
                 </Card>
             </Content>
