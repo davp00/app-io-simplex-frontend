@@ -3,7 +3,6 @@ import {Breadcrumb, Card, Layout} from "antd";
 import SimplexPrincipalForm from "../Components/SimplexPrincipalForm";
 import { SimplexContextProvider } from "../context/SimplexContext";
 import SimplexObjetiveFunction from "../Components/SimplexObjetiveFunction";
-import MathJax from 'react-mathjax2';
 import SimplexRestrictions from "../Components/SimplexRestrictions";
 import SendButton from "../Components/SendButton";
 
@@ -11,7 +10,7 @@ const {Content} = Layout;
 
 export default class SimplexPage extends Component{
 
-    componentWillMount() {
+    componentDidMount() {
         document.title = 'Metodo Simplex';
     }
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Row, Select, Form, Divider} from "antd";
+import {Col, Row, Select, Form} from "antd";
 import Title from "antd/es/typography/Title";
 import NumericInput from "./NumericInput";
 import {SimplexContext} from "../context/SimplexContext";
@@ -15,11 +15,9 @@ class SimplexPrincipalForm extends Component {
         }
     }
 
-    handleOnChange = (value, name) => {
-        this.setState((state) => {
-            state[name] = value;
-            return state;
-        });
+    handleOnChangeNumVars = (value, name) => {
+        const {setNumVars} = this.context;
+        setNumVars(value);
     };
 
     onChangeFO = (value) => {
@@ -29,7 +27,7 @@ class SimplexPrincipalForm extends Component {
 
 
     render() {
-        const {n_vars, n_restrictions, setContextState, FO} = this.context;
+        const {n_vars, n_restrictions, setContextState, FO, setRestrictions} = this.context;
 
         return (
             <Row type="flex" justify="start">
@@ -41,7 +39,7 @@ class SimplexPrincipalForm extends Component {
                                 min={1}
                                 className={'text-center'}
                                 placeholder={'Numero de variables de decisión'}
-                                onChange={setContextState}
+                                onChange={this.handleOnChangeNumVars}
                                 name={'n_vars'}
                                 value={n_vars}
                             />
@@ -52,7 +50,7 @@ class SimplexPrincipalForm extends Component {
                                 min={1}
                                 className={'text-center'}
                                 placeholder={'Numero de variables de decisión'}
-                                onChange={setContextState}
+                                onChange={setRestrictions}
                                 name={'n_restrictions'}
                                 value={n_restrictions}
                             />

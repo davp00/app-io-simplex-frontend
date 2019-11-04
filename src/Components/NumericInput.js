@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, message } from 'antd';
+import { Input } from 'antd';
 
 
 
@@ -9,7 +9,7 @@ export default class NumericInput extends Component {
         const { value, name } = e.target;
         const reg = /^-?(0|[1-9][0-9]*)(\.[0-9]*)?$/;
         if ((!Number.isNaN(value) && reg.test(value)) || value === '' || value === '-') {
-            if(min && Number(value) >= min || value === '')
+            if((min && Number(value) >= min) || value === '')
             {
                 this.props.onChange(value, name);
             }

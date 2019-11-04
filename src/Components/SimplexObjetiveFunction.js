@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {SimplexContext} from "../context/SimplexContext";
 import Title from "antd/es/typography/Title";
 import TeX from '@matejmazur/react-katex';
-import {Col, InputNumber, Row} from "antd";
+import {Col, Row} from "antd";
+import VarInput from "./VarInput";
 
 class SimplexObjetiveFunction extends Component {
 
@@ -27,14 +28,16 @@ class SimplexObjetiveFunction extends Component {
     }
 
     renderVars() {
-        const {n_vars} = this.context;
+        const {n_vars, cj, setCJ} = this.context;
 
         let vars = [];
         for (let i = 0; i < n_vars; i++) {
             vars.push(
                 <span key={i}>
                     <Col md={3} sm={12}>
-                        <InputNumber
+                        <VarInput
+                            value={cj[i]}
+                            onChange={(value) => setCJ(value, i)}
                         />
                         <TeX>{`x_${i}`}</TeX>
                     </Col>

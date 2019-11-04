@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+import {Layout, Menu, Icon} from 'antd';
 import { Route, withRouter } from 'react-router-dom';
 import SimplexPage from './Simplex.page';
 import HowToPage from "./HowTo.page";
 
-const {Header, Content, Footer, Sider} = Layout;
-const {SubMenu} = Menu;
+const {Header, Footer, Sider} = Layout;
 
 
 class Dashboard extends Component {

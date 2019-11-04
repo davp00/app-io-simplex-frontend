@@ -5,7 +5,7 @@ const {Content} = Layout;
 
 export default class HowToPage extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         document.title = 'Ayuda'
     }
 
