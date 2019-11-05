@@ -4,6 +4,7 @@ import Title from "antd/es/typography/Title";
 import TeX from '@matejmazur/react-katex';
 import {Col, Row} from "antd";
 import VarInput from "./VarInput";
+import { Fade } from "react-reveal";
 
 class SimplexObjetiveFunction extends Component {
 
@@ -15,15 +16,17 @@ class SimplexObjetiveFunction extends Component {
             return (<span/>);
 
         return (
-            <div className={'mt-5 p-2'}>
-                <Title level={4}>Funcion Objetivo</Title>
-                <div className={'mt-5'}>
-                    <Row>
-                        <Col md={3}><TeX>{`${FO} Z = `}</TeX></Col>
-                        {this.renderVars()}
-                    </Row>
+            <Fade top>
+                <div className={'mt-5 p-2'}>
+                    <Title level={4}>Funcion Objetivo</Title>
+                    <div className={'mt-5'}>
+                        <Row>
+                            <Col md={3}><TeX>{`${FO} Z = `}</TeX></Col>
+                            {this.renderVars()}
+                        </Row>
+                    </div>
                 </div>
-            </div>
+            </Fade>
         )
     }
 

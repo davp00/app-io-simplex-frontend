@@ -27,14 +27,14 @@ class SimplexPrincipalForm extends Component {
 
 
     render() {
-        const {n_vars, n_restrictions, setContextState, FO, setRestrictions} = this.context;
+        const {n_vars, n_restrictions, FO, setRestrictions} = this.context;
 
         return (
             <Row type="flex" justify="start">
                 <Col md={{span: 5, offset: 9}}>
                     <Form>
                         <Form.Item>
-                            <Title level={4} className='text-center'>Variables de decisión</Title>
+                            <Title level={4} className='text-center'>Variables de Decisión</Title>
                             <NumericInput
                                 min={1}
                                 className={'text-center'}
@@ -49,7 +49,7 @@ class SimplexPrincipalForm extends Component {
                             <NumericInput
                                 min={1}
                                 className={'text-center'}
-                                placeholder={'Numero de variables de decisión'}
+                                placeholder={'Numero de restricciones'}
                                 onChange={setRestrictions}
                                 name={'n_restrictions'}
                                 value={n_restrictions}

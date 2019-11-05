@@ -4,22 +4,30 @@ import Title from "antd/es/typography/Title";
 import {Col, Form, InputNumber, Row, Select} from "antd";
 import TeX from "@matejmazur/react-katex";
 import VarInput from "./VarInput";
+import { Fade } from "react-reveal";
 
 
 class SimplexRestrictions extends Component {
     render() {
+        const { n_vars, n_restrictions } = this.context;
+
+        if(n_vars === '' || n_restrictions === '')
+            return <span />;
+
         return (
             <div className={'mt-5 p-2'}>
                 <Title level={4}>Restricciones</Title>
                 <div className={'mt-5'}>
-                    {
-                        this.renderRestrictions()
-                    }
-                    <Row>
+                    <Fade bottom cascade>
                         {
-                            this.renderNoNegativity()
+                            this.renderRestrictions()
                         }
-                    </Row>
+                        <Row>
+                            {
+                                this.renderNoNegativity()
+                            }
+                        </Row>
+                    </Fade>
                 </div>
             </div>
         );
