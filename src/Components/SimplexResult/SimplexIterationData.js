@@ -6,28 +6,30 @@ export default class SimplexIterationData extends Component{
         const { data } = this.props;
 
         return (
-            <div className="ant-table ant-table-default ant-table-bordered ant-table-empty ant-table-scroll-position-left ">
-                <div className="ant-table-content">
-                    <div className="ant-table-body">
-                        <table className="katex3 table-simplex">
-                            <thead className="ant-table-thead">
-                            <tr >
-                                <th className='text-center'>CB</th>
-                                <th className='text-center'>VS</th>
-                                {
-                                    data.matrix.map((element,y) =>
+            <div {...this.props}>
+                <div className="ant-table ant-table-default ant-table-bordered ant-table-empty ant-table-scroll-position-left ">
+                    <div className="ant-table-content">
+                        <div className="ant-table-body">
+                            <table className="katex3 table-simplex">
+                                <thead className="ant-table-thead">
+                                <tr >
+                                    <th className='text-center'>CB</th>
+                                    <th className='text-center'>VS</th>
                                     {
-                                        return <th key={`th-${y}`} className='text-center'>{element.name.toUpperCase()}</th>
-                                    })
+                                        data.matrix.map((element,y) =>
+                                        {
+                                            return <th key={`th-${y}`} className='text-center'>{element.name.toUpperCase()}</th>
+                                        })
+                                    }
+                                </tr>
+                                </thead>
+                                <tbody className="ant-table-tbody ">
+                                {
+                                    this.renderData(data)
                                 }
-                            </tr>
-                            </thead>
-                            <tbody className="ant-table-tbody ">
-                            {
-                                this.renderData(data)
-                            }
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,7 +64,7 @@ export default class SimplexIterationData extends Component{
         rows.push(
             <tr key={'tr-zj'}>
                 <td>&nbsp;</td>
-                <td>Z</td>
+                <td className='colum-simplex'>Z</td>
                 {
                     data.zj.map((element, i) =>
                     {
@@ -75,7 +77,7 @@ export default class SimplexIterationData extends Component{
         rows.push(
             <tr key={'tr-cj_zj'}>
                 <td>&nbsp;</td>
-                <td>CJ - ZJ</td>
+                <td className='colum-simplex'>CJ - ZJ</td>
                 <td>&nbsp;</td>
                 {
                     data.cj_zj.map((element, i) =>

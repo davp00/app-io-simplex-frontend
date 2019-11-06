@@ -51,3 +51,13 @@
   background-color: #f39c12;
   color: #ecf0f1;
 }
+
+.colum-simplex {
+  background-color: #ecf0f1;
+}
+
+.items-right
+{
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import SimplexRestriction from "../classes/SimplexRestriction.class";
+import Fraction from 'fraction.js';
 
 export const SimplexContext = React.createContext();
 
@@ -141,6 +142,84 @@ export class SimplexContextProvider extends React.Component {
         return numbers.length === 2 ? numbers[0] / numbers[1] : Number(numbers[0]);
     };
 
+    resultToFraction = () =>
+    {
+        if (!this.state.result)
+            return;
+
+        this.setState((state)=>
+        {
+
+            state.result.solution.z = this.getFractionNumber(state.result.solution.z);
+
+            state.result.solution.xn = state.result.solution.xn.map((element) => this.getFractionNumber(element) );
+
+            state.result.process = state.result.process.map((p) =>
+            {
+
+                p.zj = p.zj.map((element) => this.getFractionNumber(element));
+                p.cj_zj = p.cj_zj.map((element) => this.getFractionNumber(element));
+
+                p.matrix = p.matrix.map((m) =>
+                {
+                   m.values = m.values.map((element) => this.getFractionNumber(element));
+                   return m;
+                });
+
+                p.cb = p.cb.map((element) => this.getFractionNumber(element));
+
+                return p;
+            });
+
+            return state;
+        });
+    };
+
+    getFractionNumber = (num) =>
+    {
+        let f = new Fraction(num);
+        return f.toFraction();
+    };
+
+    resultToDecimal = () =>
+    {
+        if (!this.state.result)
+            return;
+
+        this.setState((state)=>
+        {
+
+            state.result.solution.z = this.evaluate(state.result.solution.z);
+
+            state.result.solution.xn = state.result.solution.xn.map((element) => this.evaluate(element) );
+
+            state.result.process = state.result.process.map((p) =>
+            {
+
+                p.zj = p.zj.map((element) => this.evaluate(element));
+                p.cj_zj = p.cj_zj.map((element) => this.evaluate(element));
+
+                p.matrix = p.matrix.map((m) =>
+                {
+                    m.values = m.values.map((element) => this.evaluate(element));
+                    return m;
+                });
+
+                p.cb = p.cb.map((element) => this.evaluate(element));
+
+                return p;
+            });
+
+            return state;
+        });
+    };
+
+    getDecimalNumber = (fract) =>
+    {
+        let f = new Fraction(fract);
+        return f.toString();
+    }
+
     render() {
         const { children } = this.props;
 
@@ -155,7 +234,9 @@ export class SimplexContextProvider extends React.Component {
                     setRestriction: this.setRestriction,
                     validate: this.validate,
                     getData: this.getData,
-                    setResult: this.setResult
+                    setResult: this.setResult,
+                    resultToFraction : this.resultToFraction,
+                    resultToDecimal: this.resultToDecimal
                 }}
             >
                 {children}
