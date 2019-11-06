@@ -3,6 +3,8 @@ import {Layout, Menu, Icon} from 'antd';
 import { Route, withRouter } from 'react-router-dom';
 import SimplexPage from './Simplex.page';
 import HowToPage from "./HowTo.page";
+import {SimplexContextProvider} from "../context/SimplexContext";
+import SimplexResultPage from "./SimplexResult.page";
 
 const {Header, Footer, Sider} = Layout;
 
@@ -61,9 +63,16 @@ class Dashboard extends Component {
                             onClick={this.onCollapse}
                         />
                     </Header>
-                    <Route path={`${path}`} exact>
-                        <SimplexPage />
-                    </Route>
+
+                    <SimplexContextProvider>
+                        <Route path={`${path}`} exact>
+                            <SimplexPage />
+                        </Route>
+                        <Route path={`${path}result`} exact>
+                            <SimplexResultPage />
+                        </Route>
+                    </SimplexContextProvider>
+
                     <Route path={`${path}help`} exact >
                         <HowToPage />
                     </Route>

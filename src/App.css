@@ -42,3 +42,12 @@
 .text-center{
   text-align: center;
 }
+
+.table-simplex td{
+  text-align: center;
+}
+
+.piv {
+  background-color: #f39c12;
+  color: #ecf0f1;
+}

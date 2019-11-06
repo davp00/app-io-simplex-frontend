@@ -47,7 +47,7 @@ class SimplexRestrictions extends Component {
                             value={restrictions[y].x_n[x]}
                             onChange={(value) => setRestriction(value, y, 'x_n', x)}
                         />
-                        <TeX>{`x_${x}`}</TeX>
+                        <TeX>{`x_${x+1}`}</TeX>
                     </Col>
                         {
                             x !== n_vars - 1 && (
@@ -97,7 +97,7 @@ class SimplexRestrictions extends Component {
             restriction.push(
                 <span key={`r-${n_restrictions}-${x}`}>
                     <Col md={1} sm={12}>
-                        <TeX>{`x_${x}`}</TeX>
+                        <TeX>{`x_${x+1}`}</TeX>
                     </Col>
                     {
                         x !== n_vars - 1 && (

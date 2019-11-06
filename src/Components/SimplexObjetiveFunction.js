@@ -42,7 +42,7 @@ class SimplexObjetiveFunction extends Component {
                             value={cj[i]}
                             onChange={(value) => setCJ(value, i)}
                         />
-                        <TeX>{`x_${i}`}</TeX>
+                        <TeX>{`x_${i+1}`}</TeX>
                     </Col>
                     {
                         i !== n_vars - 1 && (

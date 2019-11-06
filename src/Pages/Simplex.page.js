@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Breadcrumb, Card, Layout} from "antd";
 import SimplexPrincipalForm from "../Components/SimplexPrincipalForm";
-import { SimplexContextProvider } from "../context/SimplexContext";
 import SimplexObjetiveFunction from "../Components/SimplexObjetiveFunction";
 import SimplexRestrictions from "../Components/SimplexRestrictions";
 import SendButton from "../Components/SendButton";
@@ -22,12 +21,10 @@ export default class SimplexPage extends Component{
                     <Breadcrumb.Item style={{fontWeight: 'bold'}}>Metodo Simplex</Breadcrumb.Item>
                 </Breadcrumb>
                 <Card>
-                    <SimplexContextProvider>
-                        <SimplexPrincipalForm />
-                        <SimplexObjetiveFunction />
-                        <SimplexRestrictions />
-                        <SendButton/>
-                    </SimplexContextProvider>
+                    <SimplexPrincipalForm />
+                    <SimplexObjetiveFunction />
+                    <SimplexRestrictions />
+                    <SendButton/>
                 </Card>
             </Content>
         );
