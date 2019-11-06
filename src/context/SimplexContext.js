@@ -8,13 +8,13 @@ export class SimplexContextProvider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            n_vars: '3',
-            n_restrictions: '2',
-            FO: 'max',
-            cj: ["2", "3", "-5"],
+            n_vars: '',
+            n_restrictions: '',
+            FO: '',
+            cj: [/*"2", "3", "-5"*/],
             restrictions: [
-                { x_n: ['1', '1', '1'], symbol: '=', equal: '7' },
-                { x_n: ['2', '-5', '1'], symbol: '>=', equal: '10' },
+                /*{ x_n: ['1', '1', '1'], symbol: '=', equal: '7' },
+                { x_n: ['2', '-5', '1'], symbol: '>=', equal: '10' },*/
             ],
             loading: false,
             result: undefined

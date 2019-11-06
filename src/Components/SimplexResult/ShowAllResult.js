@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Title from "antd/es/typography/Title";
-import {Divider, Table} from "antd";
+import {Divider} from "antd";
 import { Redirect } from 'react-router-dom';
 import {SimplexContext} from "../../context/SimplexContext";
-import Column from "antd/lib/table/Column";
 import SimplexIterationData from "./SimplexIterationData";
 
 class ShowAllResult extends Component {
@@ -11,7 +10,7 @@ class ShowAllResult extends Component {
         const { result } = this.context;
 
         if (!result)
-            return <Redirect to={'/'}/>
+            return <Redirect to={'/'}/>;
 
 
 
@@ -22,7 +21,7 @@ class ShowAllResult extends Component {
                     {
                         return (
                             <div  key={`i-${i}`}>
-                                <div className='p-5'>
+                                <div className='p-md-5'>
                                     <Title level={3} className='text-center mb-5'>Iteración {i}</Title>
                                     <SimplexIterationData data={element} />
                                 </div>

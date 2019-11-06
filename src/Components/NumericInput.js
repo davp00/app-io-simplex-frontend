@@ -35,6 +35,7 @@ export default class NumericInput extends Component {
                 onChange={this.onChange}
                 onBlur={this.onBlur}
                 minLength={1}
+                autoComplete={'off'}
             />
         );
     }

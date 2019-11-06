@@ -3,6 +3,7 @@ import {SimplexContext} from "../context/SimplexContext";
 import {Breadcrumb, Card, Col, Divider, Form, Layout, Row, Switch} from "antd";
 import ShowAllResult from "../Components/SimplexResult/ShowAllResult";
 import Title from "antd/es/typography/Title";
+import StepByStepResult from "../Components/SimplexResult/StepByStepResult";
 
 
 const {Content} = Layout;
@@ -10,7 +11,7 @@ const {Content} = Layout;
 class SimplexResultPage extends Component{
 
     state = {
-        stepByStep: false
+        stepByStep: true
     };
 
     componentDidMount() {
@@ -29,6 +30,11 @@ class SimplexResultPage extends Component{
         {
             resultToDecimal();
         }
+    };
+
+    handleOnChangeSwitchMode = (checked) =>
+    {
+        this.setState({stepByStep: checked});
     };
 
     render() {
@@ -50,11 +56,13 @@ class SimplexResultPage extends Component{
                             <Divider/>
                             <div>
                                 <div className='mb-1'>Mostrar paso a paso</div>
-                                <Switch />
+                                <Switch defaultChecked={this.state.stepByStep} onChange={this.handleOnChangeSwitchMode}/>
                             </div>
                         </Form>
                     </div>
-                    <ShowAllResult />
+                    {
+                        this.state.stepByStep ? <StepByStepResult /> : <ShowAllResult />
+                    }
                 </Card>
             </Content>
         );
