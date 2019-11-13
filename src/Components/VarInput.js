@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Fraction from 'fraction.js';
 
 export default class VarInput extends Component{
     reg = /^[-]?(0|[1-9][0-9]*)[/]?([0-9]*)(\.[0-9]*)?$/;
@@ -38,9 +39,12 @@ export default class VarInput extends Component{
     getValue = () =>
     {
         const { value } = this.props;
-
-        // eslint-disable-next-line no-eval
-        return this.state.focused ? value : value !== '0' ? eval(value): value;
+        try{
+            // eslint-disable-next-line no-eval
+            return this.state.focused ? value : value !== '0' ? eval(value): value;
+        }catch (e) {
+            return '';
+        }
     };
 
     render() {

@@ -149,10 +149,12 @@ export class SimplexContextProvider extends React.Component {
 
         this.setState((state)=>
         {
+            if (state.result.solution)
+            {
+                state.result.solution.z = this.getFractionNumber(state.result.solution.z);
 
-            state.result.solution.z = this.getFractionNumber(state.result.solution.z);
-
-            state.result.solution.xn = state.result.solution.xn.map((element) => this.getFractionNumber(element) );
+                state.result.solution.xn = state.result.solution.xn.map((element) => this.getFractionNumber(element) );
+            }
 
             state.result.process = state.result.process.map((p) =>
             {
@@ -175,7 +177,7 @@ export class SimplexContextProvider extends React.Component {
         });
     };
 
-    getFractionNumber = (num) =>
+    static getFractionNumber = (num) =>
     {
         let f = new Fraction(num);
         return f.toFraction();
@@ -189,9 +191,12 @@ export class SimplexContextProvider extends React.Component {
         this.setState((state)=>
         {
 
-            state.result.solution.z = this.evaluate(state.result.solution.z);
+            if (state.result.solution)
+            {
+                state.result.solution.z = this.evaluate(state.result.solution.z);
 
-            state.result.solution.xn = state.result.solution.xn.map((element) => this.evaluate(element) );
+                state.result.solution.xn = state.result.solution.xn.map((element) => this.evaluate(element) );
+            }
 
             state.result.process = state.result.process.map((p) =>
             {
@@ -218,7 +223,7 @@ export class SimplexContextProvider extends React.Component {
     {
         let f = new Fraction(fract);
         return f.toString();
-    }
+    };
 
     render() {
         const { children } = this.props;
@@ -236,7 +241,7 @@ export class SimplexContextProvider extends React.Component {
                     getData: this.getData,
                     setResult: this.setResult,
                     resultToFraction : this.resultToFraction,
-                    resultToDecimal: this.resultToDecimal
+                    resultToDecimal: this.resultToDecimal,
                 }}
             >
                 {children}

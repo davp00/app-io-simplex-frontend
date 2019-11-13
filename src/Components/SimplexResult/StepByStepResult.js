@@ -30,21 +30,24 @@ class StepByStepResult extends Component{
 
         const { step } = this.state;
 
+        let noSolution = step === result.process.length - 1 && !result.solution;
 
         return (
             <div className='mt-sm-3 mt-md-5 p-md-5'>
-                <Steps current={step}>
+                <Steps current={step} status={noSolution ? 'error' : ''}>
                     {
                         result.process.map((p, i) =>
                         {
-                            return <Step key={`s-${i}`} title={``}/>
+                            return noSolution && i === result.process.length -1 ?
+                                <Step key={`s-${i}`} title={p.phase ? `Fase ${p.phase}` : ''} description='El problema no Tiene solución' />:
+                                <Step key={`s-${i}`} title={p.phase ? `Fase ${p.phase}` : ''} />
                         })
                     }
                 </Steps>
                 <div className="steps-content">
                     <SimplexIterationData data={result.process[step]} className={'p-md-5'}/>
                     {
-                        step === result.process.length -1 && (
+                        step === result.process.length - 1 && result.solution && (
                             <div className='katex4'>
                                 <div className='mb-2'>Z = {result.solution.z}</div>
                                 {
