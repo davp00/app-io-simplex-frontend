@@ -31,14 +31,23 @@ class ShowAllResult extends Component {
                     })
                 }
                 <div className='text-center'>
-                    <Title level={3} className='mb-5'>Solución</Title>
+
                     <div className='katex4'>
-                        <div className='mb-2'>Z = {result.solution.z}</div>
                         {
-                            result.solution.xn.map((element, i) =>
-                            {
-                                return <div className='mb-2' key={`sol-x${i+1}`}>{`X${i+1}`} = {element}</div>
-                            })
+                            result.solution ? (
+                                <>
+                                    <Title level={3} className='mb-5'>Solución</Title>
+                                    <div className='mb-2'>Z = {result.solution.z}</div>
+                                    {
+                                        result.solution.xn.map((element, i) =>
+                                        {
+                                            return <div className='mb-2' key={`sol-x${i+1}`}>{`X${i+1}`} = {element}</div>
+                                        })
+                                    }
+                                </>
+                            ) : (
+                                <div>El problema no tiene solución</div>
+                            )
                         }
                     </div>
                 </div>
