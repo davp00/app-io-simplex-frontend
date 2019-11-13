@@ -177,7 +177,7 @@ export class SimplexContextProvider extends React.Component {
         });
     };
 
-    static getFractionNumber = (num) =>
+    getFractionNumber = (num) =>
     {
         let f = new Fraction(num);
         return f.toFraction();
