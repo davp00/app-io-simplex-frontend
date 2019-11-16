@@ -3,6 +3,7 @@ import {SimplexContext} from "../../context/SimplexContext";
 import { Redirect } from 'react-router-dom';
 import { Steps, Button, message } from "antd";
 import SimplexIterationData from "./SimplexIterationData";
+import StandardEQ from "../StandardEQ";
 
 const { Step } = Steps;
 
@@ -33,7 +34,12 @@ class StepByStepResult extends Component{
         let noSolution = step === result.process.length - 1 && !result.solution;
 
         return (
-            <div className='mt-sm-3 mt-md-5 p-md-5'>
+            <div className='mt-sm-3 mt-md-0 p-md-5'>
+                {
+                    step === 0 && (
+                        <StandardEQ />
+                    )
+                }
                 <Steps current={step} status={noSolution ? 'error' : ''}>
                     {
                         result.process.map((p, i) =>

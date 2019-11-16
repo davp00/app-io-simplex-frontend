@@ -44,7 +44,7 @@ export default class SimplexIterationData extends Component{
             let tds = [];
 
             tds.push(<td key={`td-cb-${y}`}>{data.cb[y]}</td>)
-            tds.push(<td key={`td-vsol-${y}`} >{data.vs[y]}</td>);
+            tds.push(<td key={`td-vsol-${y} `} className='text-transform-upper'>{data.vs[y]}</td>);
 
             for (let x = 0 ; x < data.matrix.length ; x++)
             {

@@ -31,7 +31,7 @@ class SimplexPrincipalForm extends Component {
 
         return (
             <Row type="flex" justify="start">
-                <Col md={{span: 5, offset: 9}}>
+                <Col md={{span: 6, offset: 9}}>
                     <Form>
                         <Form.Item>
                             <Title level={4} className='text-center'>Variables de Decisión</Title>

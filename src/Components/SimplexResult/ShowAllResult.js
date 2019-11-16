@@ -4,6 +4,7 @@ import {Divider} from "antd";
 import { Redirect } from 'react-router-dom';
 import {SimplexContext} from "../../context/SimplexContext";
 import SimplexIterationData from "./SimplexIterationData";
+import StandardEQ from "../StandardEQ";
 
 class ShowAllResult extends Component {
     render() {
@@ -16,6 +17,7 @@ class ShowAllResult extends Component {
 
         return (
             <div>
+                <StandardEQ/>
                 {
                     result.process.map((element, i) =>
                     {

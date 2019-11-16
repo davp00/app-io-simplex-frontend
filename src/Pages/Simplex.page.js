@@ -4,6 +4,7 @@ import SimplexPrincipalForm from "../Components/SimplexPrincipalForm";
 import SimplexObjetiveFunction from "../Components/SimplexObjetiveFunction";
 import SimplexRestrictions from "../Components/SimplexRestrictions";
 import SendButton from "../Components/SendButton";
+import StandardEQ from "../Components/StandardEQ";
 
 const {Content} = Layout;
 
